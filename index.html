@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psico & Grafo — Lic. Marisa Martínez | Psicóloga & Perito Grafóloga</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --sage:#6b9080;
+  --sage-mid:#8fb5a7;
+  --sage-light:#c8ddd7;
+  --sage-pale:#edf4f1;
+  --clay:#b87d6a;
+  --clay-light:#e8cfc4;
+  --clay-pale:#faf4f1;
+  --ink:#212b26;
+  --ink-mid:#4a5a54;
+  --ink-faint:#8a9a94;
+  --mist:#f6faf8;
+  --white:#ffffff;
+  --border:rgba(33,43,38,0.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;color:var(--ink);background:var(--white);line-height:1.7;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 7%;height:70px;
+  background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+}
+.logo{
+  font-family:'Cormorant Garamond',serif;font-size:1.45rem;
+  font-weight:800;color:var(--ink);letter-spacing:.02em;text-decoration:none;
+}
+.logo em{font-style:italic;color:var(--sage);margin:0 .15em}
+nav ul{list-style:none;display:flex;gap:2.2rem}
+nav ul a{
+  text-decoration:none;color:var(--ink-mid);font-size:.8rem;
+  font-weight:400;letter-spacing:.06em;text-transform:uppercase;
+  position:relative;transition:color .2s;
+}
+nav ul a::after{
+  content:'';position:absolute;left:0;bottom:-3px;
+  width:0;height:1.5px;background:var(--sage);transition:width .25s;
+}
+nav ul a:hover{color:var(--sage)}
+nav ul a:hover::after{width:100%}
+.nav-cta{
+  background:var(--sage);color:var(--white);text-decoration:none;
+  padding:.5rem 1.5rem;border-radius:50px;font-size:.78rem;
+  font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  transition:background .2s,transform .15s;
+}
+.nav-cta:hover{background:var(--ink);transform:translateY(-1px)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:0;padding-top:70px;overflow:hidden;
+}
+.hero-left{
+  padding:80px 7% 80px 7%;
+  background:var(--mist);
+  min-height:calc(100vh - 70px);
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+}
+.hero-left::after{
+  content:'';position:absolute;right:-60px;top:0;bottom:0;width:120px;
+  background:var(--mist);clip-path:ellipse(60px 100% at 0% 50%);
+  z-index:1;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--clay-pale);border:1px solid var(--clay-light);
+  color:var(--clay);font-size:.72rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:.4rem 1rem;border-radius:50px;margin-bottom:2rem;
+  width:fit-content;
+}
+.hero-eyebrow::before{content:'✦';font-size:.65rem}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;font-size:3.8rem;
+  font-weight:300;line-height:1.12;color:var(--ink);margin-bottom:1.5rem;
+}
+.hero h1 em{font-style:italic;color:var(--sage);display:block}
+.hero-desc{
+  font-size:.95rem;color:var(--ink-mid);max-width:420px;
+  margin-bottom:2.5rem;font-weight:300;line-height:1.8;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-sage{
+  background:var(--sage);color:var(--white);text-decoration:none;
+  padding:.85rem 2.2rem;border-radius:50px;font-size:.88rem;
+  font-weight:500;letter-spacing:.02em;transition:background .2s,transform .15s;
+}
+.btn-sage:hover{background:var(--ink);transform:translateY(-2px)}
+.btn-ghost{
+  border:1.5px solid var(--sage);color:var(--sage);text-decoration:none;
+  padding:.85rem 2.2rem;border-radius:50px;font-size:.88rem;
+  font-weight:500;letter-spacing:.02em;transition:all .2s;
+}
+.btn-ghost:hover{background:var(--sage);color:var(--white);transform:translateY(-2px)}
+.hero-right{
+  position:relative;min-height:calc(100vh - 70px);
+  background:linear-gradient(160deg,var(--sage-pale) 0%,var(--clay-pale) 100%);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-right::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 60% 30%,rgba(107,144,128,.12) 0%,transparent 65%);
+}
+.hero-photo-frame{
+  width:340px;height:420px;border-radius:50% 50% 45% 45% / 40% 40% 60% 60%;
+  overflow:hidden;border:5px solid rgba(255,255,255,.8);
+  box-shadow:0 24px 80px rgba(107,144,128,.18);
+  position:relative;z-index:1;
+}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-pill{
+  position:absolute;bottom:80px;left:30px;z-index:2;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:16px;padding:1rem 1.3rem;
+  display:flex;align-items:center;gap:.85rem;
+  box-shadow:0 8px 32px rgba(0,0,0,.06);max-width:220px;
+}
+.pill-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--sage);flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(107,144,128,.2);
+}
+.pill-txt strong{display:block;font-size:.8rem;font-weight:500;color:var(--ink)}
+.pill-txt span{font-size:.73rem;color:var(--ink-faint)}
+
+/* ── SECTION BASE ── */
+.sec{padding:100px 7%}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-label{
+  font-size:.7rem;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--sage);margin-bottom:.6rem;
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;font-size:2.6rem;
+  font-weight:300;line-height:1.2;color:var(--ink);margin-bottom:1rem;
+}
+.sec-lead{
+  font-size:.94rem;color:var(--ink-mid);font-weight:300;
+  max-width:580px;line-height:1.8;
+}
+
+/* ── SOBRE MÍ ── */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1.5fr;
+  gap:5rem;align-items:center;margin-top:4rem;
+}
+.about-img-wrap{position:relative}
+.about-photo{
+  width:100%;aspect-ratio:3/4;border-radius:24px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(107,144,128,.12);
+}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about-card{
+  position:absolute;bottom:-24px;right:-24px;
+  background:var(--ink);border-radius:18px;padding:1.4rem 1.8rem;
+}
+.about-card-num{
+  font-family:'Cormorant Garamond',serif;font-size:2.6rem;
+  font-weight:300;color:var(--sage-light);line-height:1;
+}
+.about-card-lbl{
+  font-size:.7rem;color:rgba(255,255,255,.45);
+  letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;
+}
+.about-text p{font-size:.93rem;color:var(--ink-mid);margin-bottom:1rem;font-weight:300;line-height:1.85}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
+.tag{
+  background:var(--sage-pale);color:var(--sage);
+  font-size:.76rem;font-weight:500;padding:.35rem .95rem;
+  border-radius:50px;border:1px solid var(--sage-light);
+}
+
+/* ── PSICOLOGÍA ── */
+.psico-wrap{background:var(--mist)}
+.psico-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4.5rem;align-items:start;margin-top:3rem;
+}
+.psico-text p{font-size:.92rem;color:var(--ink-mid);margin-bottom:1.1rem;font-weight:300;line-height:1.85}
+.psico-cards{display:flex;flex-direction:column;gap:1rem}
+.psico-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:16px;padding:1.25rem 1.4rem;
+  display:flex;gap:1rem;align-items:flex-start;
+  transition:box-shadow .2s,transform .2s;
+}
+.psico-card:hover{box-shadow:0 8px 30px rgba(107,144,128,.12);transform:translateX(4px)}
+.psico-card-ico{
+  width:40px;height:40px;border-radius:12px;
+  background:var(--sage-pale);display:flex;align-items:center;
+  justify-content:center;font-size:1.1rem;flex-shrink:0;
+}
+.psico-card h4{font-size:.9rem;font-weight:500;color:var(--ink);margin-bottom:.25rem}
+.psico-card p{font-size:.82rem;color:var(--ink-mid);font-weight:300;line-height:1.6}
+.psico-highlight-box{
+  margin-top:2rem;background:linear-gradient(135deg,var(--sage-pale),#fff);
+  border:1px solid var(--sage-light);border-radius:18px;
+  padding:1.75rem;
+}
+.psico-highlight-box h4{
+  font-family:'Cormorant Garamond',serif;font-size:1.35rem;
+  font-weight:600;color:var(--sage);margin-bottom:.6rem;
+}
+.psico-highlight-box p{font-size:.87rem;color:var(--ink-mid);font-weight:300;line-height:1.75}
+
+/* ── GRAFOLOGÍA ── */
+.grafo-intro{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;margin-top:1.5rem;margin-bottom:3.5rem;
+}
+.grafo-intro-text p{font-size:.92rem;color:var(--ink-mid);margin-bottom:1rem;font-weight:300;line-height:1.85}
+.grafo-intro-text p:first-child{font-size:1.05rem}
+.grafo-trust{
+  background:var(--sage-pale);border:1px solid var(--sage-light);
+  border-radius:18px;padding:2rem;align-self:start;
+}
+.grafo-trust-header{
+  display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;
+}
+.trust-icon{
+  width:42px;height:42px;border-radius:12px;
+  background:var(--white);display:flex;align-items:center;
+  justify-content:center;font-size:1.1rem;
+  box-shadow:0 2px 8px rgba(107,144,128,.15);
+}
+.grafo-trust h4{font-size:1rem;font-weight:500;color:var(--ink)}
+.grafo-trust p{font-size:.84rem;color:var(--ink-mid);font-weight:300;line-height:1.7}
+
+.grafo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.grafo-card{
+  background:var(--mist);border:1px solid var(--border);
+  border-radius:20px;padding:1.75rem;
+  transition:box-shadow .25s,transform .25s;
+}
+.grafo-card:hover{box-shadow:0 12px 40px rgba(107,144,128,.13);transform:translateY(-3px)}
+.grafo-card-ico{font-size:1.5rem;margin-bottom:1rem}
+.grafo-card h3{
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;
+  font-weight:600;color:var(--ink);margin-bottom:.6rem;
+}
+.grafo-card p{font-size:.83rem;color:var(--ink-mid);font-weight:300;line-height:1.65}
+.grafo-card.featured{
+  background:var(--white);border:1.5px solid var(--clay-light);
+  position:relative;overflow:hidden;
+}
+.grafo-card.featured::before{
+  content:'Enfoque distintivo';
+  position:absolute;top:1rem;right:1rem;
+  background:var(--clay-pale);color:var(--clay);
+  font-size:.62rem;font-weight:500;letter-spacing:.08em;
+  text-transform:uppercase;padding:.25rem .7rem;border-radius:50px;
+  border:1px solid var(--clay-light);
+}
+.grafo-card.sel{
+  background:var(--white);border:1.5px solid var(--sage-light);
+}
+
+/* ── CITA ── */
+.quote-sec{
+  background:var(--ink);padding:90px 7%;text-align:center;
+}
+.quote-inner{max-width:760px;margin:0 auto}
+.quote-mark{
+  font-family:'Cormorant Garamond',serif;font-size:5rem;
+  color:var(--sage);line-height:.5;margin-bottom:.5rem;opacity:.4;
+}
+.quote-sec blockquote{
+  font-family:'Cormorant Garamond',serif;font-size:2.1rem;
+  font-weight:300;font-style:italic;color:var(--sage-light);
+  line-height:1.45;margin-bottom:1.5rem;
+}
+.quote-sec cite{
+  font-size:.78rem;color:rgba(255,255,255,.35);
+  letter-spacing:.12em;text-transform:uppercase;font-style:normal;
+}
+
+/* ── CONTACTO ── */
+.contact-wrap{background:var(--mist)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;
+  gap:4rem;align-items:start;margin-top:3.5rem;
+}
+.contact-lead{font-size:.93rem;color:var(--ink-mid);margin-bottom:2rem;font-weight:300;line-height:1.8}
+.contact-links{display:flex;flex-direction:column;gap:.85rem}
+.contact-link{
+  display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;
+  border:1px solid var(--border);border-radius:14px;
+  text-decoration:none;color:inherit;background:var(--white);
+  transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.contact-link:hover{
+  border-color:var(--sage-light);
+  box-shadow:0 4px 20px rgba(107,144,128,.1);
+  transform:translateX(4px);
+}
+.link-ico{
+  width:40px;height:40px;border-radius:11px;
+  background:var(--sage-pale);display:flex;align-items:center;
+  justify-content:center;font-size:1rem;flex-shrink:0;
+}
+.link-txt strong{display:block;font-size:.83rem;font-weight:500;color:var(--ink)}
+.link-txt span{font-size:.78rem;color:var(--ink-faint)}
+
+.cform{display:flex;flex-direction:column;gap:1rem}
+.cform-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cform input,.cform textarea,.cform select{
+  width:100%;padding:.85rem 1.1rem;
+  border:1px solid var(--border);border-radius:12px;
+  font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);
+  background:var(--white);outline:none;transition:border-color .2s,box-shadow .2s;
+  resize:none;appearance:none;
+}
+.cform input:focus,.cform textarea:focus,.cform select:focus{
+  border-color:var(--sage);box-shadow:0 0 0 3px rgba(107,144,128,.1);
+}
+.cform textarea{height:130px}
+.cform-btn{
+  background:var(--sage);color:var(--white);border:none;
+  padding:.9rem 2.2rem;border-radius:50px;
+  font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:500;
+  cursor:pointer;letter-spacing:.03em;
+  transition:background .2s,transform .15s;align-self:flex-start;
+}
+.cform-btn:hover{background:var(--ink);transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);padding:40px 7%;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.foot-logo{
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;
+  font-weight:600;color:var(--white);
+}
+.foot-logo em{font-style:italic;color:var(--sage-light);margin:0 .12em}
+footer p{font-size:.76rem;color:rgba(255,255,255,.3)}
+.foot-fb{
+  color:rgba(255,255,255,.45);text-decoration:none;
+  font-size:.76rem;border:1px solid rgba(255,255,255,.15);
+  padding:.35rem .9rem;border-radius:50px;
+  transition:color .2s,border-color .2s;
+}
+.foot-fb:hover{color:var(--sage-light);border-color:var(--sage)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Psico <em>&</em> Grafo</a>
+  <ul>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#psicologia">Psicología</a></li>
+    <li><a href="#grafologia">Grafología</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Agendá una consulta</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Psicología · Grafología · Pericias</span>
+    <h1>Comprender la mente<em>desde adentro</em></h1>
+    <p class="hero-desc">
+      La Lic. Marisa Martínez integra la psicología conductista y el análisis grafológico para un abordaje profundo, preciso y completamente personalizado. Atención 100% online para todo el país.
+    </p>
+    <div class="hero-actions">
+      <a href="#psicologia" class="btn-sage">Conocé los servicios</a>
+      <a href="#contacto" class="btn-ghost">Primera consulta</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-frame">
+      <img src="src/B.jpg" alt="Lic. Marisa Martínez — Psicóloga y Perito Grafóloga">
+    </div>
+    <div class="hero-pill">
+      <div class="pill-dot"></div>
+      <div class="pill-txt">
+        <strong>Atención 100% online</strong>
+        <span>Todo el país · Latinoamérica</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="sec" id="sobre-mi">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-photo">
+          <img src="src/A.jpg" alt="Lic. Marisa Martínez">
+        </div>
+        <div class="about-card">
+          <div class="about-card-num">+15</div>
+          <div class="about-card-lbl">años de experiencia</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="sec-label">Sobre mí</p>
+        <h2 class="sec-title">Lic. Marisa Martínez<br>Psicóloga & Perito Grafóloga</h2>
+        <p>Soy psicóloga especializada en el enfoque conductista y perito grafóloga certificada. A lo largo de mi trayectoria desarrollé una metodología que articula ambas disciplinas para ofrecer comprensiones que difícilmente se logran por caminos separados.</p>
+        <p>Trabajo con personas que buscan conocerse mejor, superar bloqueos emocionales o conductuales, fortalecer vínculos de pareja, crecer profesionalmente, o que necesitan un informe pericial con respaldo científico. <strong>Todas las consultas son 100% online</strong>, lo que me permite acompañar a personas en todo el país y Latinoamérica.</p>
+        <p>Mi compromiso es siempre la precisión, la confidencialidad absoluta y el acompañamiento genuino en cada proceso.</p>
+        <div class="tags">
+          <span class="tag">Psicología conductista</span>
+          <span class="tag">Grafología profesional</span>
+          <span class="tag">Pericias judiciales</span>
+          <span class="tag">Análisis de pareja</span>
+          <span class="tag">Selección de personal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PSICOLOGÍA CONDUCTISTA -->
+<section class="sec psico-wrap" id="psicologia">
+  <div class="sec-inner">
+    <p class="sec-label">Psicología</p>
+    <h2 class="sec-title">Psicología conductista</h2>
+    <p class="sec-lead">Un enfoque orientado a resultados concretos, respaldado por décadas de investigación científica sobre el comportamiento humano.</p>
+    <div class="psico-grid">
+      <div class="psico-text">
+        <p>La psicología conductista parte de una premisa poderosa: las conductas se aprenden, y todo lo que se aprende puede modificarse. Esto la convierte en uno de los enfoques más eficaces para resolver dificultades concretas de la vida cotidiana.</p>
+        <p>A diferencia de corrientes que se centran en el pasado, el enfoque conductista trabaja sobre el presente: identifica los patrones que generan malestar y diseña estrategias específicas para transformarlos. El proceso es activo, colaborativo y completamente medible.</p>
+        <p>En una sociedad marcada por el estrés, la hiperconectividad y la demanda constante, contar con herramientas psicológicas reales hace una diferencia enorme. La psicología conductista no solo ayuda a resolver lo que duele hoy — también construye recursos que acompañan para siempre.</p>
+        <div class="psico-highlight-box">
+          <h4>La escritura como atajo al origen</h4>
+          <p>Una de mis capacidades más distintivas es la integración del análisis grafológico dentro del proceso terapéutico. La escritura revela el núcleo emocional del conflicto de forma directa, permitiendo llegar al origen del problema con una precisión que acorta significativamente el tiempo de trabajo — sin rodeos, sin suposiciones.</p>
+        </div>
+      </div>
+      <div class="psico-cards">
+        <div class="psico-card">
+          <div class="psico-card-ico">🎯</div>
+          <div>
+            <h4>Foco en objetivos concretos</h4>
+            <p>Cada sesión tiene dirección. Se definen metas claras y se trabaja con estrategias específicas para alcanzarlas en el menor tiempo posible.</p>
+          </div>
+        </div>
+        <div class="psico-card">
+          <div class="psico-card-ico">🔁</div>
+          <div>
+            <h4>Transformación de patrones</h4>
+            <p>Las conductas problemáticas no son rasgos fijos. Se identifican, comprenden y reemplazan por respuestas más adaptativas y funcionales.</p>
+          </div>
+        </div>
+        <div class="psico-card">
+          <div class="psico-card-ico">🧘</div>
+          <div>
+            <h4>Estrés y ansiedad</h4>
+            <p>Técnicas validadas científicamente para recuperar el equilibrio emocional en contextos de alta demanda cotidiana.</p>
+          </div>
+        </div>
+        <div class="psico-card">
+          <div class="psico-card-ico">🤝</div>
+          <div>
+            <h4>Vínculos y comunicación</h4>
+            <p>Desarrollo de habilidades sociales, asertividad y dinámica relacional para construir vínculos más saludables y auténticos.</p>
+          </div>
+        </div>
+        <div class="psico-card">
+          <div class="psico-card-ico">🚀</div>
+          <div>
+            <h4>Crecimiento personal y laboral</h4>
+            <p>Abordaje de bloqueos, creencias limitantes y conductas que frenan el desarrollo en los planos personal y profesional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRAFOLOGÍA -->
+<section class="sec" id="grafologia">
+  <div class="sec-inner">
+    <p class="sec-label">Grafología</p>
+    <h2 class="sec-title">El lenguaje de la escritura</h2>
+    <div class="grafo-intro">
+      <div class="grafo-intro-text">
+        <p>La grafología es una disciplina científica que estudia la escritura manuscrita como expresión auténtica de la personalidad. Cada trazo, presión, inclinación y espacio entre letras refleja aspectos profundos del mundo interno de quien escribe.</p>
+        <p>Lo que muchos desconocen es que la escritura revela información con una precisión que sorprende — no porque sea algo "mágico", sino porque es el resultado de procesos neurológicos y emocionales que no podemos controlar de forma consciente. Es una huella completamente honesta.</p>
+        <p>Mis análisis se realizan con rigor profesional, metodología probada y total respeto por la persona. El objetivo siempre es conocer para crecer — no para exponer ni juzgar.</p>
+      </div>
+      <div class="grafo-trust">
+        <div class="grafo-trust-header">
+          <div class="trust-icon">🔒</div>
+          <h4>Un espacio de confianza</h4>
+        </div>
+        <p>Entiendo que conocer aspectos profundos de uno mismo puede generar dudas o cierta inquietud. Por eso, todo análisis de personalidad se realiza con el <strong>consentimiento explícito</strong> de la persona, en un marco de absoluta confidencialidad profesional.</p>
+        <br>
+        <p>Lo que la escritura muestra es información <em>tuya</em> — y el proceso de descubrirla es siempre un espacio de acompañamiento, no de exposición. Muchos clientes describen el análisis como una experiencia de <strong>alivio y reconocimiento</strong>, no de vulnerabilidad.</p>
+      </div>
+    </div>
+    <div class="grafo-grid">
+      <div class="grafo-card featured">
+        <div class="grafo-card-ico">✍️</div>
+        <h3>La escritura como atajo al origen</h3>
+        <p>En el proceso terapéutico, el análisis grafológico permite identificar el núcleo emocional de un conflicto de forma directa, acortando el camino hacia la comprensión y el cambio.</p>
+      </div>
+      <div class="grafo-card">
+        <div class="grafo-card-ico">🔍</div>
+        <h3>Informe de personalidad</h3>
+        <p>Análisis completo del perfil psicológico: rasgos de carácter, fortalezas, áreas de desarrollo y dinámica emocional. Se realiza con consentimiento del individuo.</p>
+      </div>
+      <div class="grafo-card">
+        <div class="grafo-card-ico">💑</div>
+        <h3>Compatibilidad de pareja</h3>
+        <p>Análisis de ambas escrituras para identificar complementariedades y tensiones del vínculo. Una herramienta para conocerse con profundidad y construir desde la conciencia.</p>
+      </div>
+      <div class="grafo-card sel">
+        <div class="grafo-card-ico">🏢</div>
+        <h3>Selección de personal</h3>
+        <p>El análisis grafológico aplicado a candidatos alcanza un <strong>alto porcentaje de efectividad</strong> en la predicción del desempeño laboral real. Permite evaluar motivación, actitud, capacidad de trabajo bajo presión, liderazgo y compatibilidad con el puesto — complementando de forma decisiva los procesos de entrevista tradicionales.</p>
+      </div>
+      <div class="grafo-card">
+        <div class="grafo-card-ico">⚖️</div>
+        <h3>Pericias judiciales</h3>
+        <p>Informes periciales para causas judiciales: autenticidad documental, estado emocional del firmante y análisis de rúbricas con respaldo metodológico.</p>
+      </div>
+      <div class="grafo-card">
+        <div class="grafo-card-ico">👶</div>
+        <h3>Grafología evolutiva</h3>
+        <p>Detección temprana de dificultades emocionales o de aprendizaje en niños y adolescentes a través del análisis de la escritura, de manera no invasiva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITA -->
+<div class="quote-sec">
+  <div class="quote-inner">
+    <div class="quote-mark">"</div>
+    <blockquote>La escritura no miente. Es el rastro invisible de quien realmente somos.</blockquote>
+    <cite>Lic. Marisa Martínez — Psico &amp; Grafo</cite>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<section class="sec contact-wrap" id="contacto">
+  <div class="sec-inner">
+    <p class="sec-label">Contacto</p>
+    <h2 class="sec-title">Hablemos</h2>
+    <p class="sec-lead">El primer paso es una conversación. Escribime sin compromiso y coordinamos una consulta.</p>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-lead">Podés contactarme por el medio que prefieras. Respondo en menos de 24 horas y con total confidencialidad.</p>
+        <div class="contact-links">
+          <a href="https://wa.me/541123904323" class="contact-link" target="_blank" rel="noopener">
+            <div class="link-ico">💬</div>
+            <div class="link-txt">
+              <strong>WhatsApp</strong>
+              <span>+54 11 2390-4323</span>
+            </div>
+          </a>
+          <a href="https://www.facebook.com/GrafologosPublicos" class="contact-link" target="_blank" rel="noopener">
+            <div class="link-ico">📘</div>
+            <div class="link-txt">
+              <strong>Facebook</strong>
+              <span>GrafologosPublicos</span>
+            </div>
+          </a>
+          <a href="mailto:marisa.martinez.lujan@gmail.com" class="contact-link">
+            <div class="link-ico">📧</div>
+            <div class="link-txt">
+              <strong>Email</strong>
+              <span>marisa.martinez.lujan@gmail.com</span>
+            </div>
+          </a>
+          <div class="contact-link">
+            <div class="link-ico">🌐</div>
+            <div class="link-txt">
+              <strong>Atención 100% online</strong>
+              <span>Todo el país · Latinoamérica</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cform">
+        <div class="cform-row">
+          <input type="text" placeholder="Tu nombre">
+          <input type="email" placeholder="Tu email">
+        </div>
+        <select>
+          <option value="" disabled selected>¿Qué servicio te interesa?</option>
+          <option>Psicología conductista</option>
+          <option>Informe de personalidad</option>
+          <option>Compatibilidad de pareja</option>
+          <option>Selección de personal</option>
+          <option>Pericias judiciales</option>
+          <option>Grafología evolutiva (niños/adolescentes)</option>
+          <option>Otro / consulta general</option>
+        </select>
+        <textarea placeholder="Contame brevemente tu situación o consulta..."></textarea>
+        <button class="cform-btn">Enviar consulta →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">Psico <em>&</em> Grafo</div>
+  <a href="https://www.facebook.com/GrafologosPublicos" class="foot-fb" target="_blank" rel="noopener">Facebook →</a>
+  <p>© 2025 Lic. Marisa Martínez · Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
