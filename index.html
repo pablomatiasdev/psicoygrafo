@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Psico & Grafo — Lic. Marisa Martínez | Psicóloga & Perito Grafóloga</title>
+<meta name="description" content="Psicología online profesional. Terapia conductual y grafología para comprender y transformar tu vida. Atención personalizada para toda habla hispana.">
+
+<meta name="keywords" content="psicología online, terapia online, psicóloga online, grafología, terapia conductual, análisis de personalidad">
+
+<meta name="robots" content="index, follow">
+<meta name="author" content="Lic. Marisa Martínez">
+
+<meta property="og:title" content="Psicología online | Terapia conductual y grafología">
+<meta property="og:description" content="Psicología online profesional con enfoque conductual y análisis grafológico.">
+<meta property="og:image" content="A.jpg">
+<meta property="og:type" content="website">
+
+<link rel="canonical" href="https://tudominio.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -359,7 +372,92 @@ footer p{font-size:.76rem;color:rgba(255,255,255,.3)}
 }
 .foot-fb:hover{color:var(--sage-light);border-color:var(--sage)}
 
-/* ── HAMBURGER MENU ── */
+/* ── WHATSAPP FLOTANTE ── */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:58px;height:58px;border-radius:50%;
+  background:#25d366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(37,211,102,.4);
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  animation:wa-pulse 2.5s ease-in-out infinite;
+}
+.wa-float:hover{
+  transform:scale(1.1);
+  box-shadow:0 10px 32px rgba(37,211,102,.55);
+  animation:none;
+}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-tooltip{
+  position:absolute;right:70px;
+  background:var(--ink);color:#fff;
+  font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:400;
+  white-space:nowrap;padding:.45rem .9rem;border-radius:8px;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s;
+}
+.wa-tooltip::after{
+  content:'';position:absolute;left:100%;top:50%;transform:translateY(-50%);
+  border:5px solid transparent;border-left-color:var(--ink);
+}
+.wa-float:hover .wa-tooltip{opacity:1}
+@keyframes wa-pulse{
+  0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.4)}
+  50%{box-shadow:0 6px 32px rgba(37,211,102,.65),0 0 0 8px rgba(37,211,102,.1)}
+}
+@media(max-width:600px){
+  .wa-float{bottom:20px;right:20px;width:52px;height:52px}
+  .wa-float svg{width:26px;height:26px}
+  .wa-tooltip{display:none}
+}
+
+/* ── FAQ ── */
+.faq-wrap{background:var(--white)}
+.faq-list{
+  margin-top:3rem;
+  border-top:1px solid var(--border);
+}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;padding:1.5rem 0;
+  background:none;border:none;cursor:pointer;text-align:left;
+  font-family:'Outfit',sans-serif;font-size:1rem;font-weight:500;
+  color:var(--ink);transition:color .2s;
+}
+.faq-q:hover{color:var(--sage)}
+.faq-q[aria-expanded="true"]{color:var(--sage)}
+.faq-icon{
+  width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:border-color .2s,background .2s,transform .3s;
+  position:relative;
+}
+.faq-icon::before,.faq-icon::after{
+  content:'';position:absolute;background:var(--ink-mid);
+  border-radius:2px;transition:transform .3s,opacity .3s,background .2s;
+}
+.faq-icon::before{width:10px;height:1.5px}
+.faq-icon::after{width:1.5px;height:10px}
+.faq-q[aria-expanded="true"] .faq-icon{
+  border-color:var(--sage);background:var(--sage-pale);transform:rotate(45deg);
+}
+.faq-q[aria-expanded="true"] .faq-icon::before,
+.faq-q[aria-expanded="true"] .faq-icon::after{background:var(--sage)}
+.faq-a{
+  overflow:hidden;max-height:0;
+  transition:max-height .35s cubic-bezier(.4,0,.2,1);
+}
+.faq-a p{
+  padding-bottom:1.5rem;
+  font-size:.93rem;color:var(--ink-mid);font-weight:300;line-height:1.85;
+  max-width:680px;
+}
+@media(max-width:600px){
+  .faq-q{font-size:.92rem;padding:1.25rem 0}
+  .faq-a p{font-size:.88rem}
+}
 .hamburger{
   display:none;flex-direction:column;justify-content:center;
   gap:5px;cursor:pointer;padding:4px;background:none;border:none;
@@ -488,6 +586,7 @@ footer p{font-size:.76rem;color:rgba(255,255,255,.3)}
     <li><a href="#psicologia">Psicología</a></li>
     <li><a href="#grafologia">Grafología</a></li>
     <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#contacto" class="nav-cta">Agendá una consulta</a>
   <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -499,28 +598,41 @@ footer p{font-size:.76rem;color:rgba(255,255,255,.3)}
   <a href="#psicologia" onclick="closeMobileMenu()">Psicología</a>
   <a href="#grafologia" onclick="closeMobileMenu()">Grafología</a>
   <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
   <a href="#contacto" class="mob-cta" onclick="closeMobileMenu()">Agendá una consulta</a>
 </div>
+
 <script>
-const hamburger=document.getElementById('hamburger');
-const mobileMenu=document.getElementById('mobile-menu');
-hamburger.addEventListener('click',()=>{
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
+document.addEventListener("DOMContentLoaded", function () {
+  const faqs = document.querySelectorAll(".faq-item");
+  faqs.forEach(item => {
+    const btn = item.querySelector(".faq-q");
+    const content = item.querySelector(".faq-a");
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      // cerrar todos
+      faqs.forEach(i => {
+        i.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+        i.querySelector(".faq-a").style.maxHeight = null;
+      });
+      // abrir el clickeado
+      if (!isOpen) {
+        btn.setAttribute("aria-expanded", "true");
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+   });
+  });
 });
-function closeMobileMenu(){
-  hamburger.classList.remove('open');
-  mobileMenu.classList.remove('open');
-}
 </script>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <span class="hero-eyebrow">Psicología · Grafología · Pericias</span>
-    <h1>Comprender la mente<em>desde adentro</em></h1>
+    <h1>Psicología online<em>Terapia conductual y grafología</em></h1>
     <p class="hero-desc">
-      La Lic. Marisa Martínez integra la psicología conductista y el análisis grafológico para un abordaje profundo, preciso y completamente personalizado. Atención 100% online para todo el país.
+      Accedé a un proceso de psicología online profundo, claro y orientado a resultados.
+      Integro terapia conductual y grafología para identificar el origen del conflicto y trabajar con precisión desde la primera sesión.
     </p>
     <div class="hero-actions">
       <a href="#psicologia" class="btn-sage">Conocé los servicios</a>
@@ -529,7 +641,7 @@ function closeMobileMenu(){
   </div>
   <div class="hero-right">
     <div class="hero-photo-frame">
-      <img src="src/B.jpg" alt="Lic. Marisa Martínez — Psicóloga y Perito Grafóloga">
+      <img src="src/B.jpg" loading="lazy"alt="Lic. Marisa Martínez — Psicóloga y Perito Grafóloga">
     </div>
     <div class="hero-pill">
       <div class="pill-dot"></div>
@@ -541,13 +653,23 @@ function closeMobileMenu(){
   </div>
 </section>
 
+<section class="sec">
+  <div class="sec-inner">
+    <h2 class="sec-title">Psicología online para transformar tu vida</h2>
+    <p class="sec-lead">
+      La psicología online permite trabajar ansiedad, relaciones, estrés y crecimiento personal desde cualquier lugar,
+      con herramientas concretas y resultados reales.
+    </p>
+  </div>
+</section>
+
 <!-- SOBRE MÍ -->
 <section class="sec" id="sobre-mi">
   <div class="sec-inner">
     <div class="about-grid">
       <div class="about-img-wrap">
         <div class="about-photo">
-          <img src="src/A.jpg" alt="Lic. Marisa Martínez">
+          <img src="src/A.jpg" loading="lazy" alt="Psicología online Marisa Martínez">
         </div>
         <div class="about-card">
           <div class="about-card-num">+15</div>
@@ -704,7 +826,7 @@ function closeMobileMenu(){
       <div>
         <p class="contact-lead">Podés contactarme por el medio que prefieras. Respondo en menos de 24 horas y con total confidencialidad.</p>
         <div class="contact-links">
-          <a href="https://wa.me/541123904323" class="contact-link" target="_blank" rel="noopener">
+          <a href="https://wa.me/541123904323?text=Hola%20Marisa,%20quiero%20consultar%20por%20psicología%20online" class="contact-link" target="_blank" rel="noopener">
             <div class="link-ico">💬</div>
             <div class="link-txt">
               <strong>WhatsApp</strong>
@@ -718,6 +840,13 @@ function closeMobileMenu(){
               <span>GrafologosPublicos</span>
             </div>
           </a>
+          <a href="mailto:marisa.martinez.lujan@gmail.com?subject=Consulta%20psicología%20online" class="contact-link">
+            <div class="link-ico">✉️</div>
+            <div class="link-txt">
+            <strong>Email</strong>
+            <span>marisa.martinez.lujan@gmail.com</span>
+            </div>
+          </a>
           <div class="contact-link">
             <div class="link-ico">🌐</div>
             <div class="link-txt">
@@ -727,10 +856,10 @@ function closeMobileMenu(){
           </div>
         </div>
       </div>
-      <div class="cform">
+      <form action="https://formspree.io/f/TU_ID" method="POST" class="cform">
         <div class="cform-row">
-          <input type="text" placeholder="Tu nombre">
-          <input type="email" placeholder="Tu email">
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <input type="email" name="email" placeholder="Tu email" required>
         </div>
         <select>
           <option value="" disabled selected>¿Qué servicio te interesa?</option>
@@ -744,10 +873,81 @@ function closeMobileMenu(){
         </select>
         <textarea placeholder="Contame brevemente tu situación o consulta..."></textarea>
         <button class="cform-btn">Enviar consulta →</button>
-      </div>
+      </form>
     </div>
   </div>
 </section>
+
+<!-- FAQ -->
+<section class="sec faq-wrap" id="faq">
+  <div class="sec-inner">
+    <p class="sec-label">Preguntas frecuentes</p>
+    <h2 class="sec-title">FAQ</h2>
+    <p class="sec-lead">Todo lo que necesitás saber antes de dar el primer paso.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>¿Qué es la psicología conductual?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <p>Es un enfoque práctico centrado en entender cómo tus pensamientos influyen en tus acciones. Te ayuda a modificar hábitos y respuestas emocionales para mejorar tu calidad de vida diaria de forma tangible.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>¿Cómo el análisis gráfico acelera mi terapia?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <p>Funciona como un apoyo diagnóstico. Nos permite identificar patrones de conducta y bloqueos emocionales de forma objetiva, ahorrando tiempo en las primeras sesiones y yendo directo a la raíz del problema.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>¿Es un proceso invasivo?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <p>En absoluto. Es una herramienta técnica y respetuosa. No es una lectura "mágica", sino un estudio neurofisiológico que nos ayuda a entender tu estado actual para trabajar juntos en tus objetivos de bienestar.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>¿Qué beneficios tiene en la selección de personal?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <p>Permite emparejar de forma científica las capacidades naturales del postulante con las necesidades del puesto, reduciendo la rotación y asegurando que la persona se sienta cómoda y eficiente en su rol.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>¿Ofrecés sesiones online?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <p>Sí. Tanto las sesiones de psicología como la entrega de muestras para análisis se realizan mediante plataformas seguras y digitales, garantizando total comodidad y privacidad desde tu hogar.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/541123904323?text=Hola%20Marisa,%20quiero%20consultar%20por%20psicología%20online" class="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <span class="wa-tooltip">¡Escribime por WhatsApp!</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
 
 <!-- FOOTER -->
 <footer>
@@ -755,6 +955,31 @@ function closeMobileMenu(){
   <a href="https://www.facebook.com/GrafologosPublicos" class="foot-fb" target="_blank" rel="noopener">Facebook →</a>
   <p>© 2025 Lic. Marisa Martínez · Todos los derechos reservados</p>
 </footer>
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "FAQPage",
+"mainEntity": [
+{
+"@type": "Question",
+"name": "¿Qué es la psicología online?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Es un proceso terapéutico que se realiza de forma virtual, permitiendo trabajar desde cualquier lugar."
+}
+},
+{
+"@type": "Question",
+"name": "¿Funciona la terapia online?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Sí, múltiples estudios demuestran que es igual de efectiva que la presencial."
+}
+}
+]
+}
+</script>
 
 </body>
 </html>
