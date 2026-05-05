@@ -3,20 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Psico & Grafo — Lic. Marisa Martínez | Psicóloga & Perito Grafóloga</title>
-<meta name="description" content="Psicología online profesional. Terapia conductual y grafología para comprender y transformar tu vida. Atención personalizada para toda habla hispana.">
+<title>Psicóloga Online & Grafóloga | Lic. Marisa Martínez</title>
+<meta name="description" content="Psicología online con enfoque conductual y análisis grafológico. Identificamos el origen del conflicto desde la primera sesión. Atención para toda América hispana. Agendá tu consulta hoy.">
 
 <meta name="keywords" content="psicología online, terapia online, psicóloga online, grafología, terapia conductual, análisis de personalidad">
 
 <meta name="robots" content="index, follow">
 <meta name="author" content="Lic. Marisa Martínez">
 
-<meta property="og:title" content="Psicología online | Terapia conductual y grafología">
-<meta property="og:description" content="Psicología online profesional con enfoque conductual y análisis grafológico.">
-<meta property="og:image" content="A.jpg">
+<meta property="og:title" content="Psicóloga Online & Grafóloga | Lic. Marisa Martínez">
+<meta property="og:description" content="Psicología online con enfoque conductual y análisis grafológico. Identificamos el origen del conflicto desde la primera sesión. Agendá tu consulta hoy.">
+<meta property="og:image" content="https://pablomatiasdev.github.io/psicoygrafo/src/A.jpg">
+<meta property="og:url" content="https://pablomatiasdev.github.io/psicoygrafo/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
 
-<link rel="canonical" href="https://tudominio.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Psicóloga Online & Grafóloga | Lic. Marisa Martínez">
+<meta name="twitter:description" content="Psicología online con enfoque conductual y análisis grafológico. Agendá tu consulta hoy.">
+<meta name="twitter:image" content="https://pablomatiasdev.github.io/psicoygrafo/src/A.jpg">
+
+<link rel="canonical" href="https://pablomatiasdev.github.io/psicoygrafo/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -641,7 +650,7 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
   <div class="hero-right">
     <div class="hero-photo-frame">
-      <img src="src/B.jpg" loading="lazy"alt="Lic. Marisa Martínez — Psicóloga y Perito Grafóloga">
+      <img src="src/B.jpg" fetchpriority="high" width="340" height="420" alt="Lic. Marisa Martínez — Psicóloga y Perito Grafóloga">
     </div>
     <div class="hero-pill">
       <div class="pill-dot"></div>
@@ -653,9 +662,7 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 </section>
 
-<section class="sec">
-  <div class="sec-inner">
-    <h2 class="sec-title">Psicología online para transformar tu vida</h2>
+<section class="sec" id="intro">
     <p class="sec-lead">
       La psicología online permite trabajar ansiedad, relaciones, estrés y crecimiento personal desde cualquier lugar,
       con herramientas concretas y resultados reales.
@@ -669,7 +676,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="about-grid">
       <div class="about-img-wrap">
         <div class="about-photo">
-          <img src="src/A.jpg" loading="lazy" alt="Psicología online Marisa Martínez">
+          <img src="src/A.jpg" loading="lazy" width="400" height="533" alt="Psicología online Marisa Martínez">
         </div>
         <div class="about-card">
           <div class="about-card-num">+15</div>
@@ -856,23 +863,23 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>
       </div>
-      <form action="https://formspree.io/f/TU_ID" method="POST" class="cform">
+      <form action="https://formspree.io/f/xbdwyrll" method="POST" class="cform">
         <div class="cform-row">
           <input type="text" name="nombre" placeholder="Tu nombre" required>
           <input type="email" name="email" placeholder="Tu email" required>
         </div>
-        <select>
+        <select name="servicio" required>
           <option value="" disabled selected>¿Qué servicio te interesa?</option>
-          <option>Psicología conductista</option>
-          <option>Informe de personalidad</option>
-          <option>Compatibilidad de pareja</option>
-          <option>Selección de personal</option>
-          <option>Pericias judiciales</option>
-          <option>Grafología evolutiva (niños/adolescentes)</option>
-          <option>Otro / consulta general</option>
+          <option value="Psicología conductista">Psicología conductista</option>
+          <option value="Informe de personalidad">Informe de personalidad</option>
+          <option value="Compatibilidad de pareja">Compatibilidad de pareja</option>
+          <option value="Selección de personal">Selección de personal</option>
+          <option value="Pericias judiciales">Pericias judiciales</option>
+          <option value="Grafología evolutiva (niños/adolescentes)">Grafología evolutiva (niños/adolescentes)</option>
+          <option value="Otro / consulta general">Otro / consulta general</option>
         </select>
-        <textarea placeholder="Contame brevemente tu situación o consulta..."></textarea>
-        <button class="cform-btn">Enviar consulta →</button>
+        <textarea name="mensaje" placeholder="Contame brevemente tu situación o consulta..." required></textarea>
+        <button type="submit" class="cform-btn">Enviar consulta →</button>
       </form>
     </div>
   </div>
@@ -952,32 +959,84 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- FOOTER -->
 <footer>
   <div class="foot-logo">Psico <em>&</em> Grafo</div>
-  <a href="https://www.facebook.com/GrafologosPublicos" class="foot-fb" target="_blank" rel="noopener">Facebook →</a>
+  <a href="https://www.facebook.com/GrafologosPublicos" class="foot-fb" rel="me noopener" target="_blank">Facebook →</a>
   <p>© 2025 Lic. Marisa Martínez · Todos los derechos reservados</p>
 </footer>
 
 <script type="application/ld+json">
 {
-"@context": "https://schema.org",
-"@type": "FAQPage",
-"mainEntity": [
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Marisa Martínez",
+  "honorificPrefix": "Lic.",
+  "jobTitle": "Psicóloga y Perito Grafóloga",
+  "url": "https://pablomatiasdev.github.io/psicoygrafo/",
+  "image": "https://pablomatiasdev.github.io/psicoygrafo/src/A.jpg",
+  "telephone": "+541123904323",
+  "email": "marisa.martinez.lujan@gmail.com",
+  "sameAs": ["https://www.facebook.com/GrafologosPublicos"],
+  "knowsAbout": ["Psicología conductual", "Grafología", "Pericias judiciales", "Selección de personal"],
+  "description": "Psicóloga especializada en enfoque conductista y perito grafóloga certificada con más de 15 años de experiencia. Atención 100% online para toda América hispana.",
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "América Latina"
+  },
+  "availableService": [
+    {"@type": "Service", "name": "Psicología conductista online"},
+    {"@type": "Service", "name": "Análisis grafológico de personalidad"},
+    {"@type": "Service", "name": "Compatibilidad de pareja"},
+    {"@type": "Service", "name": "Selección de personal"},
+    {"@type": "Service", "name": "Pericias judiciales"},
+    {"@type": "Service", "name": "Grafología evolutiva"}
+  ]
+}
+</script>
+<script type="application/ld+json">
 {
-"@type": "Question",
-"name": "¿Qué es la psicología online?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Es un proceso terapéutico que se realiza de forma virtual, permitiendo trabajar desde cualquier lugar."
-}
-},
-{
-"@type": "Question",
-"name": "¿Funciona la terapia online?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Sí, múltiples estudios demuestran que es igual de efectiva que la presencial."
-}
-}
-]
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es la psicología conductual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es un enfoque práctico centrado en entender cómo tus pensamientos influyen en tus acciones. Te ayuda a modificar hábitos y respuestas emocionales para mejorar tu calidad de vida diaria de forma tangible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo el análisis gráfico acelera mi terapia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Funciona como un apoyo diagnóstico. Nos permite identificar patrones de conducta y bloqueos emocionales de forma objetiva, ahorrando tiempo en las primeras sesiones y yendo directo a la raíz del problema."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es un proceso invasivo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En absoluto. Es una herramienta técnica y respetuosa. No es una lectura 'mágica', sino un estudio neurofisiológico que nos ayuda a entender tu estado actual para trabajar juntos en tus objetivos de bienestar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué beneficios tiene en la selección de personal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Permite emparejar de forma científica las capacidades naturales del postulante con las necesidades del puesto, reduciendo la rotación y asegurando que la persona se sienta cómoda y eficiente en su rol."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Ofrecés sesiones online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Tanto las sesiones de psicología como la entrega de muestras para análisis se realizan mediante plataformas seguras y digitales, garantizando total comodidad y privacidad desde tu hogar."
+      }
+    }
+  ]
 }
 </script>
 
